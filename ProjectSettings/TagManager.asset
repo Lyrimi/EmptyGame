@@ -4,12 +4,22 @@
 TagManager:
   serializedVersion: 3
   tags:
+<<<<<<< HEAD
   - EmptyBox
+=======
+  - Center
+  - Right1
+  - Left1
+>>>>>>> 82668c677316675efdb3f0b98bb953e348257022
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
+<<<<<<< HEAD
   - PlayerColiders
+=======
+  - Background
+>>>>>>> 82668c677316675efdb3f0b98bb953e348257022
   - Water
   - UI
   - 
