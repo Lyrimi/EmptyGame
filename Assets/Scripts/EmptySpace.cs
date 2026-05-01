@@ -24,7 +24,5 @@ public class EmptySpace : MonoBehaviour
         Vector2 point = pointAction.ReadValue<Vector2>();
         Vector2 worldSpace = cam.ScreenToWorldPoint(point);
         transform.position = worldSpace;
-
-        print($"{point} | {Time.time} | {worldSpace}");
     }
 }

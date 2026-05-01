@@ -38,6 +38,8 @@ public class PlayerMovement : MonoBehaviour
     public float movementX;
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+        
         Debug.Log("Colided2D");
 
 
@@ -79,14 +81,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Jumpable")) 
+
+        if (collision.gameObject.CompareTag("Jumpable"))
         {
             doublejumpcooldowntimer = 2;
             cooldowntimeron = false;
         }
-        
+
     }
-    
+
+   
 
     private void Awake()
     {
