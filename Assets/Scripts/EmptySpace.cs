@@ -7,9 +7,8 @@ using UnityEngine.U2D.IK;
 public class EmptySpace : MonoBehaviour
 {   
     InputAction pointAction;
-    InputAction clickAction;
 
-[SerializeField]
+    [SerializeField]
     colisonFuckery colisonFuckery;
 
     [SerializeField]
@@ -22,7 +21,6 @@ public class EmptySpace : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         pointAction = InputSystem.actions.FindAction("Point");
-        clickAction = InputSystem.actions.FindAction("Click");
     }
 
     // Update is called once per frame

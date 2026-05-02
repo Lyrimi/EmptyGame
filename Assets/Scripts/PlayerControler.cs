@@ -56,7 +56,7 @@ public class PlayerControler : MonoBehaviour
 
     #endregion
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-
+    #region Jump
     public void onJump()
     {
         if (coyoteTime > 0)
@@ -78,6 +78,13 @@ public class PlayerControler : MonoBehaviour
             accelTime = 0;
         }
     }
+    #endregion
+
+    void Move()
+    {
+        Vector2 move = moveAction.ReadValue<Vector2>() * Speed;
+        rb.linearVelocityX = move.x;
+    }
 
     void FixedUpdate()
     {
@@ -85,8 +92,7 @@ public class PlayerControler : MonoBehaviour
         {
             coyoteTime = MaxCoyoteTime;
         }
-        Vector2 move = moveAction.ReadValue<Vector2>()*Speed;
-        rb.linearVelocityX = move.x;
+        Move();
     }
 
 
