@@ -15,7 +15,15 @@ public class CameraMover : MonoBehaviour
     {
         if (Player.transform.position.x >= 17.5f/2)
         {
-            MainCamera.transform.position = new Vector2 (17.5f,0);
+            MainCamera.transform.position = new Vector3 (17.5f,0,-10);
+        }
+        if (Player.transform.position.x <= 17.5f / 2 && Player.transform.position.x >= -17.5f / 2)
+        {
+            MainCamera.transform.position = new Vector3(0, 0, -10);
+        }
+        if (Player.transform.position.x <= -17.5f / 2)
+        {
+            MainCamera.transform.position = new Vector3(-17.5f, 0, -10);
         }
     }
 }
