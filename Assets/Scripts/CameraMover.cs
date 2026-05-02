@@ -38,7 +38,6 @@ public class CameraMover : MonoBehaviour
         
         Vector2 temp = movDir * MoveInterval;
         TargetPos += new Vector3(temp.x, temp.y, 0);
-        print(temp);
         if (curCoroutine != null)
         {
            StopCoroutine(curCoroutine); 
