@@ -28,7 +28,7 @@ public class CameraMover : MonoBehaviour
 
         if (math.abs(difPos.x) >= MoveInterval/2)
         {
-            Vector2 movDir = new Vector2((Player.transform.position - transform.position).x, 0).normalized;
+            Vector2 movDir = new Vector2((Player.transform.position - TargetPos).x, 0).normalized;
             InitMovment(movDir);
         }
     }
@@ -38,26 +38,28 @@ public class CameraMover : MonoBehaviour
         
         Vector2 temp = movDir * MoveInterval;
         TargetPos += new Vector3(temp.x, temp.y, 0);
-        if (curCoroutine != null)
-        {
-           StopCoroutine(curCoroutine); 
-        }
-        curCoroutine = StartCoroutine(StartMovment());
+        print(TargetPos);
+        StartCoroutine(StartMovment());
     }
 
     IEnumerator StartMovment()
     {
+        Vector3 localTarget = TargetPos;
         Vector3 StartPos = transform.position;
 
         float time = 0;
 
         while (time < MoveTime)
         {
-            transform.position = Vector3.Lerp(StartPos, TargetPos, time);
+            if (localTarget != TargetPos)
+            {
+                yield break;
+            }
+            transform.position = Vector3.Lerp(StartPos, localTarget, time);
             time += Time.deltaTime;
             //Waits for next frame
             yield return null;
         }
-        transform.position = TargetPos;        
+        transform.position = localTarget;        
     }
 }
