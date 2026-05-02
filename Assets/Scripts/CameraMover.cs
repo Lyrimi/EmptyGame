@@ -9,37 +9,88 @@ public class CameraMover : MonoBehaviour
 {
     [SerializeField]
     GameObject Player;
+    PlayerControler controller;
 
     [SerializeField]
-    float MoveInterval = 17.5f;
+    float HorisontalMoveInterval = 17.5f;
 
+    [SerializeField]
+
+    float VerticalMoveInterval = 10f;
+
+    [SerializeField]
+    float VerticalMoveOfset = -1f;
     [SerializeField]
     float MoveTime;
-    Coroutine curCoroutine;
+
+    [SerializeField]
+    GameObject Particles;
+    [SerializeField]
+    GameObject ParticlesOther;
+
+    bool hasParticles
+    {
+        get
+        {
+            return ParticlesOther && Particles;
+        }
+    }
     Vector3 TargetPos;
     private void Start()
     {
+        controller = Player.GetComponent<PlayerControler>();
         TargetPos = transform.position;
+        if (hasParticles)
+        {
+            Particles.SetActive(true);
+            ParticlesOther.SetActive(false);
+        }
     }
 
     private void Update()
     {
         Vector3 difPos = TargetPos-Player.transform.position;
 
-        if (math.abs(difPos.x) >= MoveInterval/2)
+        if (math.abs(difPos.x) >= HorisontalMoveInterval / 2)
         {
             Vector2 movDir = new Vector2((Player.transform.position - TargetPos).x, 0).normalized;
+            InitMovment(movDir);
+        }
+        if (math.abs(difPos.y + VerticalMoveOfset) >= VerticalMoveInterval/2)
+        {
+            Vector2 movDir = new Vector2(0, (Player.transform.position - TargetPos).y).normalized;
             InitMovment(movDir);
         }
     }
     
     void InitMovment(Vector2 movDir)
     {
-        
-        Vector2 temp = movDir * MoveInterval;
+        if (controller.enabled == false)
+        {
+            return;
+        }
+        Vector2 temp = Vector2.zero;
+        if (movDir.y == 0)
+        {
+            temp = movDir * HorisontalMoveInterval;
+        }
+        if (movDir.x == 0)
+        {
+            temp = movDir * VerticalMoveInterval;
+        }
+
         TargetPos += new Vector3(temp.x, temp.y, 0);
+
+        if (TargetPos.y < 0)
+        {
+            return;
+        }
+        
+        
+
         print(TargetPos);
         StartCoroutine(StartMovment());
+        if (hasParticles) ParticlesStart();
     }
 
     IEnumerator StartMovment()
@@ -60,6 +111,21 @@ public class CameraMover : MonoBehaviour
             //Waits for next frame
             yield return null;
         }
-        transform.position = localTarget;        
+        transform.position = localTarget;
+        if (hasParticles) ParticlesEnd();
+        
+
+    }
+
+    void ParticlesStart( )
+    {
+        (Particles, ParticlesOther) = (ParticlesOther, Particles);
+        Particles.SetActive(true);
+        Particles.transform.position = new Vector3(TargetPos.x,TargetPos.y, Particles.transform.position.z);
+    }
+
+    void ParticlesEnd()
+    {
+        ParticlesOther.SetActive(false);
     }
 }
