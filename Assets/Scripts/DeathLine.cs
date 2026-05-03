@@ -17,11 +17,20 @@ public class DeathLine : MonoBehaviour
     [SerializeField]
     Animator anim;
 
+    static public DeathLine Instance;
+
     bool reseting = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        if (Instance && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
     }
 
     // Update is called once per frame
@@ -31,13 +40,20 @@ public class DeathLine : MonoBehaviour
         Debug.DrawRay(transform.position, Vector3.right * 100, Color.red);
 
         if (!Application.IsPlaying(gameObject)) return;
-        if (reseting) return;
         if (Player.transform.position.y < transform.position.y)
         {
-            reseting = true;
-            StartCoroutine(ResetPlayer());
+            Reset();
         }
 
+    }
+
+    public void Reset()
+    {
+        if (reseting) return;
+        reseting = true;
+        StartCoroutine(ResetPlayer());
+        //Banish the player to the shadow realm
+        Player.transform.position = new Vector2(0, -100);
     }
     
     IEnumerator ResetPlayer()
