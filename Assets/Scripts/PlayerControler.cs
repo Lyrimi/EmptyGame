@@ -30,10 +30,6 @@ public class PlayerControler : MonoBehaviour
                 grounded = true;
 
             }
-            else if (collision.contacts[0].normal.y < -0.8f)
-            {
-                grounded = true;
-            }
     }
     private void OnCollisionStay2D(Collision2D collision)
     {
