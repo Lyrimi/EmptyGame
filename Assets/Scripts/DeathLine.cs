@@ -17,6 +17,9 @@ public class DeathLine : MonoBehaviour
     [SerializeField]
     Animator anim;
 
+    [SerializeField]
+    Transform RegainControlPos;
+
     static public DeathLine Instance;
 
     bool reseting = false;
@@ -86,7 +89,7 @@ public class DeathLine : MonoBehaviour
         anim.SetTrigger("End");
         //Check if player is inside GameArea
 
-        while (Player.transform.position.y > Camera.transform.position.y)
+        while (Player.transform.position.y > RegainControlPos.position.y)
         {
             yield return null;
         }
