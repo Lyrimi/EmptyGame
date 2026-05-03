@@ -24,7 +24,7 @@ public class EmptySpace : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         if (Enabled)
         {
@@ -33,7 +33,7 @@ public class EmptySpace : MonoBehaviour
         Vector2 point = pointAction.ReadValue<Vector2>();
         Vector2 worldSpace = cam.ScreenToWorldPoint(point);
 
-        rb.linearVelocity = worldSpace - new Vector2(transform.position.x,transform.position.y);
+        rb.linearVelocity = worldSpace - new Vector2(transform.position.x, transform.position.y);
     }
 
 }
