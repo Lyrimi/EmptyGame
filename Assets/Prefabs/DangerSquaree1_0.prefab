@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6114182548121629983}
   - component: {fileID: 4148188612701996793}
   - component: {fileID: 8990583514338024235}
+  - component: {fileID: 6772174157397496693}
   m_Layer: 0
   m_Name: DangerSquaree1_0
   m_TagString: Untagged
@@ -160,3 +161,15 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.28, y: 1.28}
   m_EdgeRadius: 0
+--- !u!114 &6772174157397496693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1131220858125804626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aecbb6962acfe2e67ae5915429d7eaa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
