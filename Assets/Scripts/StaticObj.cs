@@ -9,6 +9,8 @@ public class StaticObj : MonoBehaviour
     public static Activate activate;
 
     ParticleSystem particle;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,9 +21,11 @@ public class StaticObj : MonoBehaviour
         particle.Stop();
         var pmain = particle.main;
         pmain.startColor = StaticColor;
+
+
     }
 
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -43,6 +47,7 @@ public class StaticObj : MonoBehaviour
         while (particle.isPlaying)
         {
             yield return null;
+
         }
         Destroy(gameObject);
         Destroy(this);

@@ -32,6 +32,10 @@ public class CameraMover : MonoBehaviour
     {
         get
         {
+            if (!Particles.activeSelf && !ParticlesOther.activeSelf)
+            {
+                return false;
+            }
             return ParticlesOther && Particles;
         }
     }
@@ -49,20 +53,20 @@ public class CameraMover : MonoBehaviour
 
     private void Update()
     {
-        Vector3 difPos = TargetPos-Player.transform.position;
+        Vector3 difPos = TargetPos - Player.transform.position;
 
         if (math.abs(difPos.x) >= HorisontalMoveInterval / 2)
         {
             Vector2 movDir = new Vector2((Player.transform.position - TargetPos).x, 0).normalized;
             InitMovment(movDir);
         }
-        if (math.abs(difPos.y + VerticalMoveOfset) >= VerticalMoveInterval/2)
+        if (math.abs(difPos.y + VerticalMoveOfset) >= VerticalMoveInterval / 2)
         {
             Vector2 movDir = new Vector2(0, (Player.transform.position - TargetPos).y).normalized;
             InitMovment(movDir);
         }
     }
-    
+
     void InitMovment(Vector2 movDir)
     {
         if (controller.enabled == false)
@@ -85,8 +89,8 @@ public class CameraMover : MonoBehaviour
         {
             return;
         }
-        
-        
+
+
 
         print(TargetPos);
         StartCoroutine(StartMovment());
@@ -113,15 +117,15 @@ public class CameraMover : MonoBehaviour
         }
         transform.position = localTarget;
         if (hasParticles) ParticlesEnd();
-        
+
 
     }
 
-    void ParticlesStart( )
+    void ParticlesStart()
     {
         (Particles, ParticlesOther) = (ParticlesOther, Particles);
         Particles.SetActive(true);
-        Particles.transform.position = new Vector3(TargetPos.x,TargetPos.y, Particles.transform.position.z);
+        Particles.transform.position = new Vector3(TargetPos.x, TargetPos.y, Particles.transform.position.z);
     }
 
     void ParticlesEnd()

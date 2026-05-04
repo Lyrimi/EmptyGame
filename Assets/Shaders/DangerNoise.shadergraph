@@ -5,6 +5,9 @@
     "m_Properties": [
         {
             "m_Id": "a05a61218561489f837c31cc474cad7d"
+        },
+        {
+            "m_Id": "81e0b2333c99421aaf450eed93e804d4"
         }
     ],
     "m_Keywords": [],
@@ -654,10 +657,10 @@
         "m_Expanded": true,
         "m_Position": {
             "serializedVersion": "2",
-            "x": -491.9999694824219,
-            "y": 120.00000762939453,
-            "width": 207.99996948242188,
-            "height": 336.0
+            "x": -230.39996337890626,
+            "y": 148.0,
+            "width": 208.00003051757813,
+            "height": 334.39990234375
         }
     },
     "m_Slots": [
@@ -1501,6 +1504,36 @@
 }
 
 {
+    "m_SGVersion": 1,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.Vector2ShaderProperty",
+    "m_ObjectId": "81e0b2333c99421aaf450eed93e804d4",
+    "m_Guid": {
+        "m_GuidSerialized": "8d95ec38-45c6-4318-ae51-5fcac546f685"
+    },
+    "m_Name": "Vector2",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Vector2",
+    "m_DefaultReferenceName": "_Vector2",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_PerRendererData": false,
+    "m_customAttributes": [],
+    "m_Value": {
+        "x": 1.0,
+        "y": 1.0,
+        "z": 0.0,
+        "w": 0.0
+    }
+}
+
+{
     "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "8ba83c07de4b4ac2b7e78ec45cc6a48c",
@@ -1682,6 +1715,9 @@
     "m_ChildObjectList": [
         {
             "m_Id": "a05a61218561489f837c31cc474cad7d"
+        },
+        {
+            "m_Id": "81e0b2333c99421aaf450eed93e804d4"
         }
     ]
 }

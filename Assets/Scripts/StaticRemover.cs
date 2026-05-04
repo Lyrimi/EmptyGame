@@ -7,6 +7,10 @@ public class StaticRemover : MonoBehaviour
 
     SpriteRenderer spriteRenderer;
     ParticleSystem particle;
+    [SerializeField]
+    bool IsQuietTriger = false;
+    [SerializeField]
+    Quiet quiet;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -43,22 +47,28 @@ public class StaticRemover : MonoBehaviour
         if (collision.OverlapPoint(conors[0]) && collision.OverlapPoint(conors[1]))
         {
             Activate();
-        }        
+        }
 
     }
 
     void Activate()
     {
+        if (IsQuietTriger)
+        {
+            quiet.End();
+            return;
+        }
         StaticObj.activate(StaticColor);
         Remove();
     }
 
     void Remove()
     {
-            GetComponent<BoxCollider2D>().enabled = false;
-            particle.Play();
-            spriteRenderer.enabled = false;
-            StartCoroutine(AnimatedDestroy());
+
+        GetComponent<BoxCollider2D>().enabled = false;
+        particle.Play();
+        spriteRenderer.enabled = false;
+        StartCoroutine(AnimatedDestroy());
     }
 
     IEnumerator AnimatedDestroy()
