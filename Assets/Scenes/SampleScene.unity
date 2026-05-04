@@ -770,9 +770,7 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1409693049733218942, guid: 12f9f7617ee223c9baf027f16caae393, type: 3}
-    - {fileID: 3190699554729861089, guid: 12f9f7617ee223c9baf027f16caae393, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7661831841275271102, guid: 12f9f7617ee223c9baf027f16caae393, type: 3}
@@ -10486,7 +10484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1417325512
 RectTransform:
   m_ObjectHideFlags: 0

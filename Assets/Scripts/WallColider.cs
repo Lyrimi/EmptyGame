@@ -1,4 +1,3 @@
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class WallColider : MonoBehaviour
@@ -35,17 +34,17 @@ public class WallColider : MonoBehaviour
         }
         box = GetComponent<BoxCollider2D>();
         PointOfsets = new Vector2[4];
-        PointOfsets[0] = new Vector2(box.size.x/2, -box.size.y/2) * transform.lossyScale;
+        PointOfsets[0] = new Vector2(box.size.x / 2, -box.size.y / 2) * transform.lossyScale;
         PointOfsets[1] = new Vector2(-box.size.x / 2, -box.size.y / 2) * transform.lossyScale;
-        PointOfsets[2] = new Vector2(-box.size.x/2, box.size.y/2) * transform.lossyScale;
-        PointOfsets[3] = new Vector2(box.size.x/2, box.size.y/2) * transform.lossyScale;
+        PointOfsets[2] = new Vector2(-box.size.x / 2, box.size.y / 2) * transform.lossyScale;
+        PointOfsets[3] = new Vector2(box.size.x / 2, box.size.y / 2) * transform.lossyScale;
     }
 
     // Update is called once per frame
     Vector2[] Points = new Vector2[4];
     void Update()
     {
-        
+
         for (int i = 0; i < Points.Length; i++)
         {
             Points[i] = new Vector2(transform.position.x, transform.position.y) + PointOfsets[i];
@@ -58,12 +57,12 @@ public class WallColider : MonoBehaviour
 
 
     }
-    
 
-    
+
+
     void CaculateEdgeColider(Vector2 a, Vector2 b, int index)
     {
-        if (index > EdgeColiders.Length-1)
+        if (index > EdgeColiders.Length - 1)
         {
             Debug.LogError("Missing EdgeColiders");
             return;
@@ -79,7 +78,7 @@ public class WallColider : MonoBehaviour
 
         if (hit)
         {
-            colPoints[0] = (hit.point-postion)/transform.lossyScale ;
+            colPoints[0] = (hit.point - postion) / transform.lossyScale;
         }
         else
         {
@@ -91,7 +90,7 @@ public class WallColider : MonoBehaviour
 
         if (hit2)
         {
-            colPoints[1] = (hit2.point-postion)/transform.lossyScale;
+            colPoints[1] = (hit2.point - postion) / transform.lossyScale;
         }
         else
         {
@@ -110,7 +109,7 @@ public class WallColider : MonoBehaviour
         {
             Gizmos.DrawSphere(item, 0.1f);
         }
-        
+
     }
 
 }
